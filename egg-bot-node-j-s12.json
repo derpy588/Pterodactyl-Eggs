@@ -1,0 +1,36 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v1"
+    },
+    "exported_at": "2020-04-26T12:44:59+02:00",
+    "name": "NodeJS-12",
+    "author": "derpy588@gmail.com",
+    "description": "Bot NodeJS 12",
+    "image": "derpy588\/pterodactyl-eggs\/tree\/discord-nodejs-12",
+    "startup": "node ${STARTUP_FILE}",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \"\",\r\n    \"userInteraction\": []\r\n}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\nrm -rf \/mnt\/server\r\napt -y update\r\napt -y install wget unzip ffmpeg\r\nmkdir -p \/mnt\/server\/\r\nchown -R root:root \/mnt\r\ncd \/mnt\/server\/\r\nwget https:\/\/github.com\/derpy588\/pterodactyl-eggs\/raw\/discord-nodejs-12\/NodeJS-Default.zip\r\nunzip NodeJS-Default\r\nrm -rf NodeJS-Default.zip",
+            "container": "ubuntu:18.04",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Startup File",
+            "description": "Select a file to start your bot from!",
+            "env_variable": "STARTUP_FILE",
+            "default_value": "index.js",
+            "user_viewable": 1,
+            "user_editable": 1,
+            "rules": "required|string|max:200"
+        }
+    ]
+}
